@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>외국인 근로자 휴면보험금 신청 안내 | 한국산업인력공단 경기서부지사</title>
+
+<!-- Google Fonts : Noto Sans KR -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Noto Sans KR"', 'sans-serif'],
+        },
+        colors: {
+          navy: {
+            950: '#0B1B3F',
+            900: '#0F2454',
+            800: '#15316E',
+            700: '#1B3E86',
+          },
+          brand: {
+            500: '#2E5FE0',
+            600: '#1E4FD1',
+          }
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans KR', sans-serif; }
+  .step-badge {
+    box-shadow: 0 6px 16px -6px rgba(30,79,209,0.55);
+  }
+  .card-hover { transition: transform .2s ease, box-shadow .2s ease; }
+  .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -12px rgba(15,36,84,0.25); }
+  .btn-press:active { transform: scale(0.98); }
+  #locationModal { backdrop-filter: blur(2px); }
+</style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-5 py-3 flex items-center">
+      <img src="./images/기관_로고.png" alt="한국산업인력공단 경기서부지사" class="h-6 sm:h-7 w-auto">
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-navy-900 to-navy-950 text-white">
+      <!-- 배경 장식 -->
+      <div class="pointer-events-none absolute inset-0 opacity-20">
+        <div class="absolute -top-10 -left-10 w-72 h-72 rounded-full bg-brand-500 blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-blue-400 blur-3xl"></div>
+      </div>
+
+      <div class="relative px-5 sm:px-10 pt-12 pb-8 text-center">
+        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight mb-5 text-white">
+          외국인 근로자<br>
+          휴면보험금 신청 안내
+        </h1>
+        <p class="text-blue-100 text-sm sm:text-lg leading-relaxed max-w-xl mx-auto">
+          체류자격 변경 혹은 체류기간 만료로 출국하는 경우<br class="hidden sm:block">
+          아직 찾지 못한 보험금이 있는지 확인해보세요!
+        </p>
+
+        <!-- CTA 버튼 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto mt-8">
+          <a href="./files/휴면보험금_신청서류_전체.pdf" download="휴면보험금_신청서류_전체.pdf"
+             class="btn-press flex items-center justify-between gap-2 bg-brand-600 hover:bg-brand-500 transition-colors rounded-xl px-5 py-4 font-semibold shadow-lg">
+            <span class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 16h6M9 8h1"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              신청 양식 다운
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <a href="tel:032-719-0804"
+             class="btn-press flex items-center justify-between gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-xl px-5 py-4 font-semibold border border-white/20">
+            <span class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+              문의하기
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 01. 사업 안내 ===================== -->
+    <section class="px-5 sm:px-10 py-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="step-badge bg-navy-900 text-white text-sm font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">01</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-navy-900">사업 안내</h2>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-3">
+
+        <!-- 카드 1 : 누가 신청 -->
+        <div class="card-hover bg-white rounded-2xl border border-slate-200 p-5 sm:p-6">
+          <div class="w-12 h-12 rounded-full bg-brand-600 text-white flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="font-bold text-navy-900 mb-3">누가 신청할 수 있나요?</h3>
+          <ul class="text-sm text-slate-600 space-y-1.5 leading-relaxed">
+            <li>· 체류자격(비자)이 변경된 경우<br><span class="text-slate-400 pl-3">(E-9 → E-7, H-2 → F-4)</span></li>
+            <li>· 체류기간이 만료되어 출국하는 경우</li>
+          </ul>
+        </div>
+
+        <!-- 카드 2 : 어떤 보험금 -->
+        <div class="card-hover bg-white rounded-2xl border border-slate-200 p-5 sm:p-6">
+          <div class="w-12 h-12 rounded-full bg-brand-600 text-white flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg>
+          </div>
+          <h3 class="font-bold text-navy-900 mb-3">어떤 보험금을 받을 수 있나요?</h3>
+          <div class="space-y-3 text-sm">
+            <div>
+              <p class="font-semibold text-brand-600">귀국비용보험</p>
+              <p class="text-slate-600">항공권 등 귀국 시 필요한 비용 지원을 위한 보험금</p>
+            </div>
+            <div>
+              <p class="font-semibold text-brand-600">출국만기보험</p>
+              <p class="text-slate-600">퇴직금 대신 받는 보험금</p>
+              <p class="text-slate-400 text-xs">(이미 사업장에서 퇴직금을 지급한 경우, 사업주가 신청 가능)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 카드 3 : 어떻게 신청 -->
+        <div class="card-hover bg-white rounded-2xl border border-slate-200 p-5 sm:p-6">
+          <div class="w-12 h-12 rounded-full bg-brand-600 text-white flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="font-bold text-navy-900 mb-3">어떻게 신청할 수 있나요?</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">방문</span>
+              <button onclick="openLocationModal()"
+                class="btn-press inline-flex items-center gap-1 bg-navy-900 text-white text-xs font-semibold px-3 py-2 rounded-lg hover:bg-navy-800 transition-colors">
+                지사 위치 안내
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 pt-3">
+              <span class="text-slate-500">팩스</span>
+              <span class="font-medium text-slate-700">0505-174-2285</span>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-100 pt-3">
+              <span class="text-slate-500">이메일</span>
+              <a href="mailto:jiraffe2040@hrdkorea.or.kr" class="font-medium text-brand-600 underline underline-offset-2">jiraffe2040@hrdkorea.or.kr</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 02. 신청 서류 ===================== -->
+    <section class="px-5 sm:px-10 py-10 bg-white">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="step-badge bg-navy-900 text-white text-sm font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">02</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-navy-900">신청 서류</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 items-stretch">
+
+        <div class="h-full rounded-2xl border border-slate-200 p-4 flex flex-col items-center text-center">
+          <div class="w-11 h-11 rounded-full bg-slate-100 text-navy-800 flex items-center justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-navy-900 mb-3 leading-snug">보험금<br>지급신청서</p>
+          <a href="./files/보험금_지급신청서.pdf" download="보험금_지급신청서.pdf"
+             class="btn-press mt-auto inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold bg-navy-900 text-white px-3 py-1.5 rounded-md hover:bg-navy-800 transition-colors">
+            양식 다운로드
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M20 21H4"/></svg>
+          </a>
+        </div>
+
+        <div class="h-full rounded-2xl border border-slate-200 p-4 flex flex-col items-center text-center">
+          <div class="w-11 h-11 rounded-full bg-slate-100 text-navy-800 flex items-center justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-navy-900 mb-3 leading-snug">개인정보<br>처리동의서</p>
+          <a href="./files/개인정보_처리동의서.pdf" download="개인정보_처리동의서.pdf"
+             class="btn-press mt-auto inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold bg-navy-900 text-white px-3 py-1.5 rounded-md hover:bg-navy-800 transition-colors">
+            양식 다운로드
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M20 21H4"/></svg>
+          </a>
+        </div>
+
+        <div class="h-full rounded-2xl border border-slate-200 p-4 flex flex-col items-center text-center">
+          <div class="w-11 h-11 rounded-full bg-slate-100 text-navy-800 flex items-center justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h4M15 12h4M7 16h10"/></svg>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-navy-900 leading-snug">외국인등록증</p>
+        </div>
+
+        <div class="h-full rounded-2xl border border-slate-200 p-4 flex flex-col items-center text-center">
+          <div class="w-11 h-11 rounded-full bg-slate-100 text-navy-800 flex items-center justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-navy-900 leading-snug">본인 명의의<br>통장</p>
+        </div>
+
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-500 text-center mt-6">신청 보험금 종류에 따라 추가 서류 필요 (귀국 비행기 티켓 등)</p>
+    </section>
+
+    <!-- ===================== 03. 문의하기 ===================== -->
+    <section class="px-5 sm:px-10 py-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="step-badge bg-navy-900 text-white text-sm font-bold rounded-full w-9 h-9 flex items-center justify-center shrink-0">03</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-navy-900">문의하기</h2>
+      </div>
+
+      <div class="bg-gradient-to-br from-navy-900 to-navy-800 rounded-2xl p-6 sm:p-7 text-white flex flex-col sm:flex-row items-center gap-5 mb-4">
+        <div class="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-4xl">
+          🙋‍♀️
+        </div>
+        <div class="w-full space-y-3 text-sm sm:text-base">
+          <div class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 text-blue-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span><span class="text-blue-200">담당자</span> &nbsp;한국산업인력공단 경기서부지사 김지혜 주임</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 text-blue-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="text-blue-200">연락처</span>
+            <a href="tel:032-719-0804" class="font-semibold underline underline-offset-2">032-719-0804</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 text-blue-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            <span class="text-blue-200">이메일</span>
+            <a href="mailto:jiraffe2040@hrdkorea.or.kr" class="font-semibold underline underline-offset-2">jiraffe2040@hrdkorea.or.kr</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="https://hrdc.hrdkorea.or.kr/hrdc/194897" target="_blank" rel="noopener noreferrer"
+           class="btn-press flex items-center justify-between gap-2 bg-white border border-slate-200 rounded-xl px-5 py-4 font-semibold text-navy-900 hover:bg-slate-50 transition-colors">
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+            홈페이지
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a href="https://youtube.com/shorts/btGzQVMdvCk?si=kx8DL5mrnneyYwKP" target="_blank" rel="noopener noreferrer"
+           class="btn-press flex items-center justify-between gap-2 bg-white border border-slate-200 rounded-xl px-5 py-4 font-semibold text-navy-900 hover:bg-slate-50 transition-colors">
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.5V8.5L15.8 12Z"/></svg>
+            Youtube
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-navy-950 text-center py-6">
+      <p class="text-white/70 text-xs sm:text-sm font-semibold tracking-wide">
+        <span class="text-white font-black">HRDK</span> &nbsp;한국산업인력공단 경기서부지사
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- ===================== 지사 위치 안내 모달 ===================== -->
+  <div id="locationModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+        <h3 class="font-bold text-navy-900">지사 위치 안내</h3>
+        <button onclick="closeLocationModal()" class="btn-press w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="p-4">
+        <img src="./images/지사위치.png" alt="지사 위치 안내" class="w-full h-auto rounded-lg border border-slate-200">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLocationModal() {
+      const modal = document.getElementById('locationModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLocationModal() {
+      const modal = document.getElementById('locationModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('locationModal').addEventListener('click', function(e){
+      if (e.target === this) closeLocationModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeLocationModal();
+    });
+  </script>
+
+</body>
+</html>
