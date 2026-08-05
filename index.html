@@ -47,19 +47,7 @@
   .btn-press:active { transform: scale(0.98); }
   #locationModal { backdrop-filter: blur(2px); }
 
-  /* 번역 버튼 스타일 */
-  .translate-widget .goog-te-gadget { font-family: 'Noto Sans KR', sans-serif !important; font-size: 0 !important; }
-  .translate-widget .goog-te-gadget-simple {
-    background-color: #15316E !important;
-    border: none !important;
-    border-radius: 9999px !important;
-    padding: 6px 12px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-  }
-  .translate-widget .goog-te-gadget-simple span { color: #fff !important; font-size: 13px !important; font-weight: 600 !important; }
-  .translate-widget img { display: none !important; } /* 구글 국기 아이콘 숨김 */
-  .translate-widget .goog-te-menu-value span { color: #fff !important; }
+  /* 구글 번역 배너/위젯 관련 전역 처리 */
   body { top: 0 !important; } /* 구글 번역 배너로 인한 페이지 밀림 방지 */
   .goog-te-banner-frame { display: none !important; }
 </style>
@@ -71,10 +59,9 @@
   <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
     <div class="max-w-4xl mx-auto px-5 py-3 flex items-center justify-between">
       <img src="./images/기관_로고.png" alt="한국산업인력공단 경기서부지사" class="h-6 sm:h-7 w-auto">
-      <div class="flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-navy-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-        <div id="google_translate_element" class="translate-widget"></div>
-      </div>
+      <!-- 구글 번역 위젯은 화면에는 노출하지 않고, '번역하기' 버튼에서 이 기능을 재사용합니다.
+           (0px 크기로 숨기면 구글 스크립트가 select를 생성하지 못하는 경우가 있어, 화면 밖으로만 이동시켜 숨깁니다) -->
+      <div id="google_translate_element" style="position:fixed; top:-1000px; left:-1000px;"></div>
     </div>
   </header>
 
@@ -100,22 +87,24 @@
 
         <!-- CTA 버튼 -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto mt-8">
-          <a href="./files/휴면보험금_신청서류_전체.pdf" download="휴면보험금_신청서류_전체.pdf"
-             class="btn-press flex items-center justify-between gap-2 bg-brand-600 hover:bg-brand-500 transition-colors rounded-xl px-5 py-4 font-semibold shadow-lg">
-            <span class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 16h6M9 8h1"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-              신청 양식 다운
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
           <a href="tel:032-719-0804"
-             class="btn-press flex items-center justify-between gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-xl px-5 py-4 font-semibold border border-white/20">
+             class="btn-press flex items-center justify-between gap-2 bg-brand-600 hover:bg-brand-500 transition-colors rounded-xl px-5 py-4 font-semibold shadow-lg">
             <span class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
               문의하기
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
           </a>
+
+          <!-- 번역하기 (사이트 전체 번역 - 헤더에 있던 구글 번역 기능 재사용) -->
+          <button type="button" onclick="openSiteTranslateModal()"
+            class="btn-press w-full flex items-center justify-between gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-xl px-5 py-4 font-semibold border border-white/20">
+            <span class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+              번역하기
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -203,11 +192,18 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
           </div>
           <p class="text-xs sm:text-sm font-semibold text-navy-900 mb-3 leading-snug">보험금<br>지급신청서</p>
-          <a href="./files/보험금_지급신청서.pdf" download="보험금_지급신청서.pdf"
-             class="btn-press mt-auto inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold bg-navy-900 text-white px-3 py-1.5 rounded-md hover:bg-navy-800 transition-colors">
-            양식 다운로드
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M20 21H4"/></svg>
-          </a>
+          <div class="mt-auto flex flex-col gap-2 w-full items-center">
+            <a href="./files/보험금_지급신청서.pdf" download="보험금_지급신청서.pdf"
+               class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold bg-navy-900 text-white px-3 py-1.5 rounded-md hover:bg-navy-800 transition-colors">
+              양식 다운로드
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M20 21H4"/></svg>
+            </a>
+            <button type="button" onclick="openTranslateFormModal('form1')"
+               class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-navy-900 border border-navy-900 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+              번역 양식 보기
+            </button>
+          </div>
         </div>
 
         <div class="h-full rounded-2xl border border-slate-200 p-4 flex flex-col items-center text-center">
@@ -215,11 +211,18 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
           </div>
           <p class="text-xs sm:text-sm font-semibold text-navy-900 mb-3 leading-snug">개인정보<br>처리동의서</p>
-          <a href="./files/개인정보_처리동의서.pdf" download="개인정보_처리동의서.pdf"
-             class="btn-press mt-auto inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold bg-navy-900 text-white px-3 py-1.5 rounded-md hover:bg-navy-800 transition-colors">
-            양식 다운로드
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M20 21H4"/></svg>
-          </a>
+          <div class="mt-auto flex flex-col gap-2 w-full items-center">
+            <a href="./files/개인정보_처리동의서.pdf" download="개인정보_처리동의서.pdf"
+               class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold bg-navy-900 text-white px-3 py-1.5 rounded-md hover:bg-navy-800 transition-colors">
+              양식 다운로드
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M20 21H4"/></svg>
+            </a>
+            <button type="button" onclick="openTranslateFormModal('form2')"
+               class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-navy-900 border border-navy-900 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+              번역 양식 보기
+            </button>
+          </div>
         </div>
 
         <div class="h-full rounded-2xl border border-slate-200 p-4 flex flex-col items-center text-center">
@@ -306,6 +309,134 @@
       </div>
       <div class="p-4">
         <img src="./images/지사위치.png" alt="지사 위치 안내" class="w-full h-auto rounded-lg border border-slate-200">
+        <div class="flex justify-center mt-4">
+          <button type="button" onclick="copyBranchAddress(this)"
+            class="btn-press inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 transition-colors text-white text-sm font-semibold px-5 py-2.5 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="copy-address-label">지사 주소 복사하기</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 번역 양식 보기 모달 ===================== -->
+  <div id="translateFormModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-3 sm:p-4">
+    <div class="bg-white rounded-2xl w-full max-w-3xl max-h-[92vh] overflow-y-auto shadow-2xl">
+
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100 sticky top-0 bg-white z-10">
+        <h3 class="font-bold text-navy-900 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+          번역 양식 보기
+        </h3>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="openSiteTranslateModal()"
+            class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-navy-900 border border-navy-900 px-2.5 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+            번역하기
+          </button>
+          <button onclick="closeTranslateFormModal()" class="btn-press w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="p-4 sm:p-5 space-y-5">
+
+        <!-- STEP 1 : 언어 선택 -->
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="step-badge bg-brand-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0">1</span>
+            <h4 class="font-bold text-navy-900 text-sm sm:text-base">언어 선택</h4>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 mb-3 pl-8">번역할 언어를 선택하세요.</p>
+          <div class="flex items-center gap-2 pl-8">
+            <select id="translateFormLangSelect" class="flex-1 sm:flex-none sm:w-56 border border-slate-300 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 bg-white">
+              <option value="zh">🇨🇳 中文(简体)</option>
+              <option value="vi">🇻🇳 Tiếng Việt</option>
+            </select>
+            <button type="button" onclick="applyTranslateFormLang()"
+              class="btn-press bg-brand-600 hover:bg-brand-500 transition-colors text-white text-sm font-semibold px-4 py-2 rounded-lg">적용</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 : 번역 양식 확인 -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <div class="flex items-center gap-2">
+              <span class="step-badge bg-brand-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0">2</span>
+              <h4 class="font-bold text-navy-900 text-sm sm:text-base">번역 양식 확인</h4>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="downloadTranslateFormImage()"
+                class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-navy-900 border border-navy-900 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M20 21H4"/></svg>
+                이미지 다운로드
+              </button>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 mb-3 pl-8">원본(한국어)과 번역된 내용을 확인하세요.</p>
+
+          <div class="grid grid-cols-2 gap-2 sm:gap-4">
+            <div class="rounded-lg overflow-hidden border border-slate-200">
+              <div class="bg-navy-900 text-white text-center text-xs sm:text-sm font-semibold py-2">원본 양식 (한국어)</div>
+              <div class="overflow-auto bg-slate-50" style="max-height:60vh;">
+                <img id="translateFormOriginalImg" src="" alt="원본 양식" class="w-full h-auto block" style="transform-origin: top left;">
+              </div>
+            </div>
+            <div class="rounded-lg overflow-hidden border border-slate-200">
+              <div id="translateFormTranslatedLabel" class="bg-emerald-700 text-white text-center text-xs sm:text-sm font-semibold py-2">번역 양식</div>
+              <div class="overflow-auto bg-slate-50" style="max-height:60vh;">
+                <img id="translateFormTranslatedImg" src="" alt="번역 양식" class="w-full h-auto block" style="transform-origin: top left;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-2 bg-blue-50 text-blue-800 text-xs sm:text-sm rounded-lg px-3 py-2.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          번역 내용은 참고용이며, 실제 작성 시에는 한국어 양식을 사용해 주세요.
+        </div>
+
+        <div class="text-[11px] sm:text-xs text-slate-400 text-center">
+          번역은 구글 번역(Google Translate)을 기반으로 제공되며, 일부 표현은 실제 의미와 다를 수 있습니다.
+        </div>
+
+        <div class="text-[11px] sm:text-xs text-slate-500 text-center font-medium pt-1 border-t border-slate-100">
+          현재는 중국어와 베트남어 번역 양식을 제공하고 있으며, 지원 언어는 지속적으로 확대해 나갈 예정입니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 사이트 전체 번역 언어 선택 팝업 ===================== -->
+  <div id="siteTranslateModal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/60 p-4">
+    <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+        <h3 class="font-bold text-navy-900 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+          언어 선택
+        </h3>
+        <button onclick="closeSiteTranslateModal()" class="btn-press w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="p-3 grid grid-cols-2 gap-2 max-h-[70vh] overflow-y-auto">
+        <button type="button" onclick="translatePageTo('en')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇺🇸</span> English</button>
+        <button type="button" onclick="translatePageTo('vi')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇻🇳</span> Tiếng Việt</button>
+        <button type="button" onclick="translatePageTo('zh-CN')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇨🇳</span> 中文(简体)</button>
+        <button type="button" onclick="translatePageTo('th')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇹🇭</span> ภาษาไทย</button>
+        <button type="button" onclick="translatePageTo('km')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇰🇭</span> ខ្មែរ</button>
+        <button type="button" onclick="translatePageTo('ne')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇳🇵</span> नेपाली</button>
+        <button type="button" onclick="translatePageTo('id')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇮🇩</span> Indonesia</button>
+        <button type="button" onclick="translatePageTo('mn')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇲🇳</span> Монгол</button>
+        <button type="button" onclick="translatePageTo('uz')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇺🇿</span> Oʻzbek</button>
+        <button type="button" onclick="translatePageTo('ru')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇷🇺</span> Русский</button>
+        <button type="button" onclick="translatePageTo('tl')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇵🇭</span> Tagalog</button>
+        <button type="button" onclick="translatePageTo('my')" class="btn-press flex items-center gap-2 px-3 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-sm font-medium text-slate-700"><span class="text-lg">🇲🇲</span> မြန်မာ</button>
+      </div>
+      <div class="p-3 pt-0">
+        <button type="button" onclick="translatePageTo('ko')" class="btn-press w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-sm font-semibold text-navy-900"><span class="text-lg">🇰🇷</span> 한국어(원문 보기)</button>
       </div>
     </div>
   </div>
@@ -329,6 +460,187 @@
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape') closeLocationModal();
     });
+
+    /* ===================== 지사 주소 복사하기 ===================== */
+    function copyBranchAddress(btn) {
+      const address = '경기 부천시 원미구 길주로 463번길 69';
+      const label = btn.querySelector('.copy-address-label');
+      const originalText = label.textContent;
+
+      const showCopied = function() {
+        label.textContent = '복사 완료!';
+        setTimeout(function(){ label.textContent = originalText; }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address).then(showCopied).catch(function(){
+          copyAddressFallback(address, showCopied);
+        });
+      } else {
+        copyAddressFallback(address, showCopied);
+      }
+    }
+
+    function copyAddressFallback(text, onSuccess) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        onSuccess();
+      } catch (err) {
+        alert('주소 복사에 실패했습니다. 직접 선택해서 복사해 주세요: ' + text);
+      }
+      document.body.removeChild(textarea);
+    }
+
+    /* ===================== 번역 양식 보기 모달 ===================== */
+    const translateFormAssets = {
+      form1: {
+        title: '보험금 지급신청서',
+        original: './images/양식_지급신청서_원본.png',
+        zh: './images/양식_지급신청서_zh.png',
+        vi: './images/양식_지급신청서_vi.png',
+        downloadName: '보험금_지급신청서'
+      },
+      form2: {
+        title: '개인정보 처리동의서',
+        original: './images/양식_동의서_원본.png',
+        zh: './images/양식_동의서_zh.png',
+        vi: './images/양식_동의서_vi.png',
+        downloadName: '개인정보_처리동의서'
+      }
+    };
+    const translateFormLangNames = { zh: '中文(简体)', vi: 'Tiếng Việt' };
+
+    let currentTranslateFormDoc = null;
+
+    function openTranslateFormModal(docKey) {
+      currentTranslateFormDoc = docKey;
+      const asset = translateFormAssets[docKey];
+      const langSelect = document.getElementById('translateFormLangSelect');
+      const lang = langSelect.value || 'zh';
+
+      document.getElementById('translateFormOriginalImg').src = asset.original;
+      document.getElementById('translateFormTranslatedImg').src = asset[lang];
+      document.getElementById('translateFormTranslatedLabel').textContent = '번역 양식 (' + translateFormLangNames[lang] + ')';
+
+      const modal = document.getElementById('translateFormModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeTranslateFormModal() {
+      const modal = document.getElementById('translateFormModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function applyTranslateFormLang() {
+      if (!currentTranslateFormDoc) return;
+      const asset = translateFormAssets[currentTranslateFormDoc];
+      const lang = document.getElementById('translateFormLangSelect').value;
+      document.getElementById('translateFormTranslatedImg').src = asset[lang];
+      document.getElementById('translateFormTranslatedLabel').textContent = '번역 양식 (' + translateFormLangNames[lang] + ')';
+    }
+
+    function downloadTranslateFormImage() {
+      if (!currentTranslateFormDoc) return;
+      const asset = translateFormAssets[currentTranslateFormDoc];
+      const lang = document.getElementById('translateFormLangSelect').value;
+      const a = document.createElement('a');
+      a.href = asset[lang];
+      a.download = asset.downloadName + '_' + lang + '.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    document.getElementById('translateFormModal').addEventListener('click', function(e){
+      if (e.target === this) closeTranslateFormModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeTranslateFormModal();
+    });
+
+    /* ===================== 사이트 전체 번역 (구글 번역 재사용) ===================== */
+    function openSiteTranslateModal() {
+      const modal = document.getElementById('siteTranslateModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSiteTranslateModal() {
+      const modal = document.getElementById('siteTranslateModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('siteTranslateModal').addEventListener('click', function(e){
+      if (e.target === this) closeSiteTranslateModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeSiteTranslateModal();
+    });
+
+    function translatePageTo(langCode) {
+      closeSiteTranslateModal();
+      if (langCode === 'ko') {
+        // 원문 보기: 구글 번역 쿠키 제거 후 새로고침
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+        location.reload();
+        return;
+      }
+
+      // file:// 로 직접 열어본 경우 구글 번역 위젯은 정상 동작하지 않습니다.
+      // (구글 번역 스크립트는 실제 웹 주소(http/https)에서만 동작합니다)
+      if (location.protocol === 'file:') {
+        alert('번역 기능은 웹에 게시된 이후(https 주소)에만 정상적으로 동작합니다.\nGitHub Pages 등에 업로드한 뒤 다시 확인해 주세요.');
+        return;
+      }
+
+      const combo = document.querySelector('#google_translate_element select.goog-te-combo');
+      if (combo) {
+        setGoogleTranslateCombo(combo, langCode);
+        return;
+      }
+
+      // 위젯이 아직 준비되지 않은 경우 잠시 재시도하고,
+      // 그래도 실패하면(예: 광고/추적 차단 확장 프로그램이 구글 번역 스크립트를 막은 경우)
+      // 구글 번역 웹페이지를 새 창으로 열어주는 방식으로 대체합니다.
+      let attemptsLeft = 20; // 20 * 250ms = 5초
+      const timer = setInterval(function () {
+        attemptsLeft--;
+        const c = document.querySelector('#google_translate_element select.goog-te-combo');
+        if (c) {
+          clearInterval(timer);
+          setGoogleTranslateCombo(c, langCode);
+        } else if (attemptsLeft <= 0) {
+          clearInterval(timer);
+          openGoogleTranslateFallback(langCode);
+        }
+      }, 250);
+    }
+
+    function setGoogleTranslateCombo(combo, langCode) {
+      combo.value = langCode;
+      combo.dispatchEvent(new Event('change'));
+    }
+
+    // 구글 번역 위젯 스크립트가 로드되지 못했을 때(광고 차단 등) 사용하는 대체 경로:
+    // 구글 번역이 현재 페이지를 직접 불러와 번역해주는 페이지를 새 탭으로 엽니다.
+    function openGoogleTranslateFallback(langCode) {
+      const url = 'https://translate.google.com/translate?sl=ko&tl=' + encodeURIComponent(langCode) +
+        '&u=' + encodeURIComponent(location.href);
+      window.open(url, '_blank', 'noopener');
+    }
   </script>
 
   <!-- ===================== 구글 번역 위젯 ===================== -->
