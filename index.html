@@ -94,7 +94,7 @@
             class="btn-press w-full flex items-center justify-between gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-xl px-5 py-4 font-semibold border border-white/20">
             <span class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-              <span data-i18n="btn_translate">번역하기</span>
+              <span data-i18n="btn_translate">언어 선택</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
           </button>
@@ -194,7 +194,7 @@
             <button type="button" onclick="openTranslateFormModal('form1')"
                class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-navy-900 border border-navy-900 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
-              <span data-i18n="btn_view_translated_form">번역 양식 보기</span>
+              <span data-i18n="btn_view_translated_form">다른 언어로 양식 보기</span>
             </button>
           </div>
         </div>
@@ -213,7 +213,7 @@
             <button type="button" onclick="openTranslateFormModal('form2')"
                class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-navy-900 border border-navy-900 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
-              <span data-i18n="btn_view_translated_form">번역 양식 보기</span>
+              <span data-i18n="btn_view_translated_form">다른 언어로 양식 보기</span>
             </button>
           </div>
         </div>
@@ -320,13 +320,13 @@
       <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100 sticky top-0 bg-white z-10">
         <h3 class="font-bold text-navy-900 flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
-          <span data-i18n="translate_form_modal_title">번역 양식 보기</span>
+          <span data-i18n="translate_form_modal_title">다른 언어로 양식 보기</span>
         </h3>
         <div class="flex items-center gap-2">
           <button type="button" onclick="openSiteTranslateModal()"
             class="btn-press inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-navy-900 border border-navy-900 px-2.5 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-            <span data-i18n="btn_translate">번역하기</span>
+            <span data-i18n="btn_translate">언어 선택</span>
           </button>
           <button onclick="closeTranslateFormModal()" class="btn-press w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -358,7 +358,7 @@
           <div class="flex items-center justify-between mb-1.5">
             <div class="flex items-center gap-2">
               <span class="step-badge bg-brand-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shrink-0">2</span>
-              <h4 class="font-bold text-navy-900 text-sm sm:text-base" data-i18n="step2_title">번역 양식 확인</h4>
+              <h4 class="font-bold text-navy-900 text-sm sm:text-base" data-i18n="step2_title">다른 언어 양식 확인</h4>
             </div>
             <div class="flex items-center gap-2">
               <button type="button" onclick="downloadTranslateFormImage()"
@@ -378,9 +378,9 @@
               </div>
             </div>
             <div class="rounded-lg overflow-hidden border border-slate-200">
-              <div id="translateFormTranslatedLabel" class="bg-emerald-700 text-white text-center text-xs sm:text-sm font-semibold py-2">번역 양식</div>
+              <div id="translateFormTranslatedLabel" class="bg-emerald-700 text-white text-center text-xs sm:text-sm font-semibold py-2">다른 언어 양식</div>
               <div class="overflow-auto bg-slate-50" style="max-height:60vh;">
-                <img id="translateFormTranslatedImg" src="" alt="번역 양식" class="w-full h-auto block" style="transform-origin: top left;">
+                <img id="translateFormTranslatedImg" src="" alt="다른 언어 양식" class="w-full h-auto block" style="transform-origin: top left;">
               </div>
             </div>
           </div>
@@ -396,7 +396,7 @@
         </div>
 
         <div class="text-[11px] sm:text-xs text-slate-500 text-center font-medium pt-1 border-t border-slate-100" data-i18n="note3">
-          현재는 중국어와 베트남어 번역 양식을 제공하고 있으며, 지원 언어는 지속적으로 확대해 나갈 예정입니다.
+          현재는 중국어와 베트남어로 다른 언어 양식을 제공하고 있으며, 지원 언어는 지속적으로 확대해 나갈 예정입니다.
         </div>
       </div>
     </div>
@@ -514,7 +514,7 @@
 
       document.getElementById('translateFormOriginalImg').src = asset.original;
       document.getElementById('translateFormTranslatedImg').src = asset[lang];
-      document.getElementById('translateFormTranslatedLabel').textContent = '번역 양식 (' + translateFormLangNames[lang] + ')';
+      document.getElementById('translateFormTranslatedLabel').textContent = '다른 언어 양식 (' + translateFormLangNames[lang] + ')';
 
       const modal = document.getElementById('translateFormModal');
       modal.classList.remove('hidden');
@@ -534,7 +534,7 @@
       const asset = translateFormAssets[currentTranslateFormDoc];
       const lang = document.getElementById('translateFormLangSelect').value;
       document.getElementById('translateFormTranslatedImg').src = asset[lang];
-      document.getElementById('translateFormTranslatedLabel').textContent = '번역 양식 (' + translateFormLangNames[lang] + ')';
+      document.getElementById('translateFormTranslatedLabel').textContent = '다른 언어 양식 (' + translateFormLangNames[lang] + ')';
     }
 
     function downloadTranslateFormImage() {
@@ -580,7 +580,7 @@
     const translations = {
       en: {
         btn_contact: "Contact Us",
-        btn_translate: "Translate",
+        btn_translate: "Select Language",
         hero_title: "Foreign Workers<br>Unclaimed Insurance Benefits Guide",
         hero_subtitle: "If you are leaving Korea due to a change in visa status or expiration of your stay period,<br class=\"hidden sm:block\">check if you have any unclaimed insurance benefits!",
         sec01_title: "Program Overview",
@@ -601,7 +601,7 @@
         sec02_title: "Application Documents",
         doc1_title: "Insurance Payment<br>Application Form",
         btn_download: "Download Form",
-        btn_view_translated_form: "View Translated Form",
+        btn_view_translated_form: "View Form in Another Language",
         doc2_title: "Personal Information<br>Consent Form",
         doc3_title: "Alien Registration Card",
         doc4_title: "Bankbook in<br>Your Own Name",
@@ -614,23 +614,23 @@
         location_modal_title: "Branch Location",
         copy_address_btn: "Copy Branch Address",
         copy_done: "Copied!",
-        translate_form_modal_title: "View Translated Form",
+        translate_form_modal_title: "View Form in Another Language",
         step1_title: "Select Language",
         step1_desc: "Please select the language you want to translate into.",
         apply_btn: "Apply",
-        step2_title: "Check Translated Form",
+        step2_title: "Check Form in Another Language",
         download_image_btn: "Download Image",
         step2_desc: "Please check the original (Korean) and translated content.",
         original_form_label: "Original Form (Korean)",
         note1: "The translated content is for reference only; please use the Korean form when actually filling it out.",
         note2: "Translations are provided based on Google Translate, so some expressions may differ from the actual meaning.",
-        note3: "Currently, translated forms are available in Chinese and Vietnamese, and more languages will be added continuously.",
+        note3: "Currently, forms in other languages are available in Chinese and Vietnamese, and more languages will be added continuously.",
         site_translate_modal_title: "Select Language",
         korean_original_btn: "Korean (Original)"
       },
       zh: {
         btn_contact: "联系我们",
-        btn_translate: "翻译",
+        btn_translate: "选择语言",
         hero_title: "外籍劳动者<br>沉睡保险金申请指南",
         hero_subtitle: "因签证（滞留资格）变更或滞留期限届满而出境时，<br class=\"hidden sm:block\">请确认是否还有未领取的保险金！",
         sec01_title: "项目介绍",
@@ -651,7 +651,7 @@
         sec02_title: "申请材料",
         doc1_title: "保险金<br>支付申请书",
         btn_download: "下载表格",
-        btn_view_translated_form: "查看翻译表格",
+        btn_view_translated_form: "查看其他语言表格",
         doc2_title: "个人信息<br>处理同意书",
         doc3_title: "外国人登录证",
         doc4_title: "本人名义的<br>银行账户",
@@ -664,23 +664,23 @@
         location_modal_title: "分支机构位置",
         copy_address_btn: "复制分支机构地址",
         copy_done: "复制完成！",
-        translate_form_modal_title: "查看翻译表格",
+        translate_form_modal_title: "查看其他语言表格",
         step1_title: "选择语言",
         step1_desc: "请选择要翻译的语言。",
         apply_btn: "应用",
-        step2_title: "确认翻译表格",
+        step2_title: "确认其他语言表格",
         download_image_btn: "下载图片",
         step2_desc: "请核对原文（韩语）与翻译内容。",
         original_form_label: "原文表格（韩语）",
         note1: "翻译内容仅供参考，实际填写时请使用韩语表格。",
         note2: "翻译内容基于谷歌翻译（Google Translate）提供，部分表达可能与实际含义有所不同。",
-        note3: "目前提供中文和越南语翻译表格，未来将持续扩大支持语言范围。",
+        note3: "目前提供中文和越南语的其他语言表格，未来将持续扩大支持语言范围。",
         site_translate_modal_title: "选择语言",
         korean_original_btn: "韩语（原文）"
       },
       vi: {
         btn_contact: "Liên hệ",
-        btn_translate: "Dịch",
+        btn_translate: "Chọn ngôn ngữ",
         hero_title: "Người lao động nước ngoài<br>Hướng dẫn đăng ký tiền bảo hiểm chưa nhận",
         hero_subtitle: "Khi xuất cảnh do thay đổi tư cách lưu trú hoặc hết thời hạn lưu trú,<br class=\"hidden sm:block\">hãy kiểm tra xem có khoản tiền bảo hiểm nào chưa nhận hay không!",
         sec01_title: "Giới thiệu chương trình",
@@ -701,7 +701,7 @@
         sec02_title: "Hồ sơ đăng ký",
         doc1_title: "Đơn xin<br>chi trả tiền bảo hiểm",
         btn_download: "Tải mẫu đơn",
-        btn_view_translated_form: "Xem mẫu đã dịch",
+        btn_view_translated_form: "Xem mẫu bằng ngôn ngữ khác",
         doc2_title: "Giấy đồng ý<br>xử lý thông tin cá nhân",
         doc3_title: "Thẻ đăng ký người nước ngoài",
         doc4_title: "Sổ ngân hàng<br>đứng tên bản thân",
@@ -714,23 +714,23 @@
         location_modal_title: "Hướng dẫn vị trí chi nhánh",
         copy_address_btn: "Sao chép địa chỉ chi nhánh",
         copy_done: "Đã sao chép!",
-        translate_form_modal_title: "Xem mẫu đã dịch",
+        translate_form_modal_title: "Xem mẫu bằng ngôn ngữ khác",
         step1_title: "Chọn ngôn ngữ",
         step1_desc: "Vui lòng chọn ngôn ngữ muốn dịch.",
         apply_btn: "Áp dụng",
-        step2_title: "Kiểm tra mẫu đã dịch",
+        step2_title: "Kiểm tra mẫu bằng ngôn ngữ khác",
         download_image_btn: "Tải hình ảnh",
         step2_desc: "Vui lòng kiểm tra nội dung gốc (tiếng Hàn) và nội dung đã dịch.",
         original_form_label: "Mẫu gốc (tiếng Hàn)",
         note1: "Nội dung dịch chỉ mang tính tham khảo; khi điền thực tế vui lòng sử dụng mẫu tiếng Hàn.",
         note2: "Bản dịch được cung cấp dựa trên Google Dịch (Google Translate) nên một số biểu đạt có thể khác với ý nghĩa thực tế.",
-        note3: "Hiện tại chỉ cung cấp mẫu dịch tiếng Trung và tiếng Việt, các ngôn ngữ hỗ trợ sẽ tiếp tục được mở rộng.",
+        note3: "Hiện tại chỉ cung cấp mẫu bằng ngôn ngữ khác cho tiếng Trung và tiếng Việt, các ngôn ngữ hỗ trợ sẽ tiếp tục được mở rộng.",
         site_translate_modal_title: "Chọn ngôn ngữ",
         korean_original_btn: "Tiếng Hàn (Bản gốc)"
       },
       th: {
         btn_contact: "ติดต่อสอบถาม",
-        btn_translate: "แปลภาษา",
+        btn_translate: "เลือกภาษา",
         hero_title: "แรงงานต่างชาติ<br>คำแนะนำการขอรับเงินประกันที่ยังไม่ได้รับ",
         hero_subtitle: "กรณีเดินทางออกนอกประเทศเนื่องจากเปลี่ยนสถานะการพำนักหรือครบกำหนดระยะเวลาพำนัก<br class=\"hidden sm:block\">โปรดตรวจสอบว่ามีเงินประกันที่ยังไม่ได้รับหรือไม่!",
         sec01_title: "แนะนำโครงการ",
@@ -751,7 +751,7 @@
         sec02_title: "เอกสารที่ต้องยื่น",
         doc1_title: "ใบคำร้องขอรับ<br>เงินประกัน",
         btn_download: "ดาวน์โหลดแบบฟอร์ม",
-        btn_view_translated_form: "ดูแบบฟอร์มที่แปลแล้ว",
+        btn_view_translated_form: "ดูแบบฟอร์มภาษาอื่น",
         doc2_title: "หนังสือยินยอม<br>การประมวลผลข้อมูลส่วนบุคคล",
         doc3_title: "บัตรประจำตัวคนต่างด้าว",
         doc4_title: "สมุดบัญชีธนาคาร<br>ในชื่อของตนเอง",
@@ -764,23 +764,23 @@
         location_modal_title: "แนะนำที่ตั้งสาขา",
         copy_address_btn: "คัดลอกที่อยู่สาขา",
         copy_done: "คัดลอกเรียบร้อย!",
-        translate_form_modal_title: "ดูแบบฟอร์มที่แปลแล้ว",
+        translate_form_modal_title: "ดูแบบฟอร์มภาษาอื่น",
         step1_title: "เลือกภาษา",
         step1_desc: "กรุณาเลือกภาษาที่ต้องการแปล",
         apply_btn: "นำไปใช้",
-        step2_title: "ตรวจสอบแบบฟอร์มที่แปลแล้ว",
+        step2_title: "ตรวจสอบแบบฟอร์มภาษาอื่น",
         download_image_btn: "ดาวน์โหลดรูปภาพ",
         step2_desc: "กรุณาตรวจสอบต้นฉบับ (ภาษาเกาหลี) และเนื้อหาที่แปลแล้ว",
         original_form_label: "แบบฟอร์มต้นฉบับ (ภาษาเกาหลี)",
         note1: "เนื้อหาที่แปลมีไว้เพื่อการอ้างอิงเท่านั้น เมื่อกรอกจริงกรุณาใช้แบบฟอร์มภาษาเกาหลี",
         note2: "การแปลนี้ให้บริการโดยอ้างอิงจาก Google Translate ดังนั้นบางถ้อยคำอาจแตกต่างจากความหมายที่แท้จริง",
-        note3: "ปัจจุบันให้บริการแบบฟอร์มแปลภาษาจีนและภาษาเวียดนาม และจะขยายภาษาที่รองรับต่อไปในอนาคต",
+        note3: "ปัจจุบันให้บริการแบบฟอร์มภาษาอื่นสำหรับภาษาจีนและภาษาเวียดนาม และจะขยายภาษาที่รองรับต่อไปในอนาคต",
         site_translate_modal_title: "เลือกภาษา",
         korean_original_btn: "ภาษาเกาหลี (ต้นฉบับ)"
       },
       km: {
         btn_contact: "ទាក់ទង",
-        btn_translate: "បកប្រែ",
+        btn_translate: "ជ្រើសរើសភាសា",
         hero_title: "កម្មករបរទេស<br>មគ្គុទ្ទេសក៍ស្នើសុំប្រាក់ធានារ៉ាប់រងមិនទាន់ទទួល",
         hero_subtitle: "ក្នុងករណីចាកចេញពីប្រទេសដោយសារការផ្លាស់ប្តូរស្ថានភាពស្នាក់នៅ ឬផុតកំណត់រយៈពេលស្នាក់នៅ<br class=\"hidden sm:block\">សូមពិនិត្យមើលថាតើមានប្រាក់ធានារ៉ាប់រងណាមួយដែលមិនទាន់ទទួលដែរឬទេ!",
         sec01_title: "ការណែនាំអំពីកម្មវិធី",
@@ -801,7 +801,7 @@
         sec02_title: "ឯកសារដាក់ពាក្យសុំ",
         doc1_title: "ពាក្យសុំទទួល<br>ប្រាក់ធានារ៉ាប់រង",
         btn_download: "ទាញយកទម្រង់",
-        btn_view_translated_form: "មើលទម្រង់ដែលបានបកប្រែ",
+        btn_view_translated_form: "មើលទម្រង់ជាភាសាផ្សេង",
         doc2_title: "លិខិតយល់ព្រម<br>ដំណើរការព័ត៌មានផ្ទាល់ខ្លួន",
         doc3_title: "អត្តសញ្ញាណប័ណ្ណជនបរទេស",
         doc4_title: "សៀវភៅធនាគារ<br>ក្នុងនាមខ្លួនឯង",
@@ -814,23 +814,23 @@
         location_modal_title: "ព័ត៌មានទីតាំងសាខា",
         copy_address_btn: "ចម្លងអាសយដ្ឋានសាខា",
         copy_done: "បានចម្លងរួច!",
-        translate_form_modal_title: "មើលទម្រង់ដែលបានបកប្រែ",
+        translate_form_modal_title: "មើលទម្រង់ជាភាសាផ្សេង",
         step1_title: "ជ្រើសរើសភាសា",
         step1_desc: "សូមជ្រើសរើសភាសាដែលអ្នកចង់បកប្រែ។",
         apply_btn: "អនុវត្ត",
-        step2_title: "ពិនិត្យទម្រង់ដែលបានបកប្រែ",
+        step2_title: "ពិនិត្យទម្រង់ជាភាសាផ្សេង",
         download_image_btn: "ទាញយករូបភាព",
         step2_desc: "សូមពិនិត្យមើលឯកសារដើម (ភាសាកូរ៉េ) និងខ្លឹមសារដែលបានបកប្រែ។",
         original_form_label: "ទម្រង់ដើម (ភាសាកូរ៉េ)",
         note1: "ខ្លឹមសារបកប្រែមានសម្រាប់ជាឯកសារយោងតែប៉ុណ្ណោះ សូមប្រើទម្រង់ជាភាសាកូរ៉េនៅពេលបំពេញជាក់ស្តែង។",
         note2: "ការបកប្រែនេះផ្តល់ជូនដោយផ្អែកលើ Google Translate ដូច្នេះការបញ្ចេញមតិខ្លះអាចខុសពីអត្ថន័យពិតប្រាកដ។",
-        note3: "បច្ចុប្បន្នផ្តល់ជូនតែទម្រង់បកប្រែជាភាសាចិន និងវៀតណាមប៉ុណ្ណោះ ហើយភាសាដែលគាំទ្រនឹងបន្តពង្រីកបន្ថែមទៀត។",
+        note3: "បច្ចុប្បន្នផ្តល់ជូនតែទម្រង់ជាភាសាផ្សេងសម្រាប់ភាសាចិន និងវៀតណាមប៉ុណ្ណោះ ហើយភាសាដែលគាំទ្រនឹងបន្តពង្រីកបន្ថែមទៀត។",
         site_translate_modal_title: "ជ្រើសរើសភាសា",
         korean_original_btn: "ភាសាកូរ៉េ (ដើម)"
       },
       ru: {
         btn_contact: "Связаться с нами",
-        btn_translate: "Перевести",
+        btn_translate: "Выбор языка",
         hero_title: "Иностранные работники<br>Руководство по получению невостребованной страховой выплаты",
         hero_subtitle: "Если вы выезжаете из страны в связи с изменением визового статуса или истечением срока пребывания,<br class=\"hidden sm:block\">проверьте, есть ли у вас невостребованные страховые выплаты!",
         sec01_title: "Информация о программе",
@@ -851,7 +851,7 @@
         sec02_title: "Документы для подачи заявления",
         doc1_title: "Заявление на выплату<br>страховой суммы",
         btn_download: "Скачать бланк",
-        btn_view_translated_form: "Посмотреть переведённый бланк",
+        btn_view_translated_form: "Посмотреть бланк на другом языке",
         doc2_title: "Согласие на обработку<br>персональных данных",
         doc3_title: "Карта иностранца",
         doc4_title: "Банковская книжка<br>на ваше имя",
@@ -864,17 +864,17 @@
         location_modal_title: "Информация о филиале",
         copy_address_btn: "Скопировать адрес филиала",
         copy_done: "Скопировано!",
-        translate_form_modal_title: "Посмотреть переведённый бланк",
+        translate_form_modal_title: "Посмотреть бланк на другом языке",
         step1_title: "Выбор языка",
         step1_desc: "Пожалуйста, выберите язык перевода.",
         apply_btn: "Применить",
-        step2_title: "Проверка переведённого бланка",
+        step2_title: "Проверка бланка на другом языке",
         download_image_btn: "Скачать изображение",
         step2_desc: "Пожалуйста, сравните оригинал (на корейском) и переведённое содержание.",
         original_form_label: "Оригинал бланка (на корейском)",
         note1: "Переведённое содержание предназначено только для справки; при заполнении используйте бланк на корейском языке.",
         note2: "Перевод выполнен с помощью Google Translate, поэтому некоторые формулировки могут отличаться от фактического значения.",
-        note3: "В настоящее время переведённые бланки доступны на китайском и вьетнамском языках; список поддерживаемых языков будет постепенно расширяться.",
+        note3: "В настоящее время бланки на другом языке доступны на китайском и вьетнамском языках; список поддерживаемых языков будет постепенно расширяться.",
         site_translate_modal_title: "Выбор языка",
         korean_original_btn: "Корейский (оригинал)"
       }
